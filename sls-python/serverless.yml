@@ -31,12 +31,12 @@ provider:
 #  region: us-east-1
 
 # you can add statements to the Lambda function's IAM Role here
- iamRoleStatements:
-   - Effect: "Allow"
-     Action:
-       - "lambda:*"
-     Resources:
-       - "*"
+iamRoleStatements:
+  - Effect: "Allow"
+    Action:
+      - "lambda:*"
+    Resources:
+      - "*"
 #      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
 #    - Effect: "Allow"
 #      Action:
@@ -49,8 +49,10 @@ provider:
 #            - "/*"
 
 # you can define service wide environment variables here
-#  environment:
-#    variable1: value1
+environment:
+  variable1: value1
+  variable2: value2
+  FIRST_NAME: "John"
 
 # you can add packaging information here
 #package:
@@ -70,6 +72,12 @@ functions:
     handler: handler.hello
     memorySize: 256
     timeout: 6
+  hello-env-john:
+    handler: handler.hello
+  hello-env-marc:
+    handler: handler.hello
+    environment:
+      FIRST_NAME: "Marc"
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
 #    Check the event documentation for details
