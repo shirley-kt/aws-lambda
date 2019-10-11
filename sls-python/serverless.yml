@@ -25,6 +25,13 @@ provider:
   runtime: python3.7
   profile: serverless-admin
   region: us-east-1
+  vpc:
+    securityGroupIds:
+      - sg-03e8832396ff210a8
+      - securityGroupId2
+    subnetIds:
+      - subnet-4aa35544
+      - subnet-59c3fe3e
 
 # you can overwrite defaults here
 #  stage: dev
